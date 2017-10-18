@@ -652,9 +652,9 @@ RCT_EXPORT_METHOD(checkActionCode:
                 case FIRActionCodeOperationUnknown:
                     actionType = @"UNKNOWN";
                     break;
-                case FIRActionCodeOperationRecoverEmail:
-                    actionType = @"RECOVER_EMAIL";
-                    break;
+                // case FIRActionCodeOperationRecoverEmail:
+                //     actionType = @"RECOVER_EMAIL";
+                //     break;
             }
 
             NSDictionary *result = @{@"data": @{@"email": [info dataForKey:FIRActionCodeEmailKey], @"fromEmail": [info dataForKey:FIRActionCodeFromEmailKey],}, @"actionType": actionType,};
@@ -754,17 +754,17 @@ RCT_EXPORT_METHOD(signInWithPhoneNumber:(NSString *) appDisplayName
             rejecter:(RCTPromiseRejectBlock) reject) {
     FIRApp *firApp = [RNFirebaseUtil getApp:appDisplayName];
 
-    [[FIRPhoneAuthProvider providerWithAuth:[FIRAuth authWithApp:firApp]] verifyPhoneNumber:phoneNumber UIDelegate:nil completion:^(NSString * _Nullable verificationID, NSError * _Nullable error) {
-        if (error) {
-            [self promiseRejectAuthException:reject error:error];
-        } else {
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            [defaults setObject:verificationID forKey:@"authVerificationID"];
-            resolve(@{
-                    @"verificationId": verificationID
-            });
-        }
-    }];
+    // [[FIRPhoneAuthProvider providerWithAuth:[FIRAuth authWithApp:firApp]] verifyPhoneNumber:phoneNumber UIDelegate:nil completion:^(NSString * _Nullable verificationID, NSError * _Nullable error) {
+    //     if (error) {
+    //         [self promiseRejectAuthException:reject error:error];
+    //     } else {
+    //         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //         [defaults setObject:verificationID forKey:@"authVerificationID"];
+    //         resolve(@{
+    //                 @"verificationId": verificationID
+    //         });
+    //     }
+    // }];
 }
 
 /**
