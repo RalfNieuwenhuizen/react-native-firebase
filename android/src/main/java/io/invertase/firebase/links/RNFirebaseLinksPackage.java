@@ -17,6 +17,18 @@ public class RNFirebaseLinksPackage implements ReactPackage {
   }
 
   /**
+   * @return list of JS modules to register with the newly created catalyst instance.
+   * <p/>
+   * IMPORTANT: Note that only modules that needs to be accessible from the native code should be
+   * listed here. Also listing a native module here doesn't imply that the JS implementation of it
+   * will be automatically included in the JS bundle.
+   */
+  // TODO: Removed in 0.47.0. Here for backwards compatability
+  public List<Class<? extends JavaScriptModule>> createJSModules() {
+    return Collections.emptyList();
+  }
+
+  /**
    * @param reactContext react application context that can be used to create modules
    * @return list of native modules to register with the newly created catalyst instance
    */
